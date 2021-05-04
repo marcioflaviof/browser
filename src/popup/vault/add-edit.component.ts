@@ -95,7 +95,7 @@ export class AddEditComponent extends BaseAddEditComponent {
                 tabs.filter(tab => tab.url != null && tab.url !== '').map(tab => tab.url);
         }
         
-        if(this.popupUtilsService.inPopout) {
+        if (this.popupUtilsService.inPopout) {
             this.cipher.name = '';
         }
 
