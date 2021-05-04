@@ -18,6 +18,7 @@ import { PasswordRepromptService } from 'jslib/abstractions/passwordReprompt.ser
 import { PlatformUtilsService } from 'jslib/abstractions/platformUtils.service';
 import { TotpService } from 'jslib/abstractions/totp.service';
 import { UserService } from 'jslib/abstractions/user.service';
+import { CipherRepromptType } from 'jslib/enums/cipherRepromptType';
 
 @Component({
     selector: 'app-action-buttons',
@@ -46,7 +47,8 @@ export class ActionButtonsComponent {
     }
 
     async copy(cipher: CipherView, value: string, typeI18nKey: string, aType: string) {
-        if (this.passwordRepromptService.protectedFields().includes(aType) && !await this.passwordRepromptService.showPasswordPrompt()) {
+        if (this.cipher.reprompt !== CipherRepromptType.None && this.passwordRepromptService.protectedFields().includes(aType) &&
+            !await this.passwordRepromptService.showPasswordPrompt()) {
             return;
         }
 
